@@ -1,0 +1,74 @@
+/* Global font family */
+* {
+    font-family: 'Source Code Pro';
+}
+
+/* Command Palette styling */
+.quick-input-widget {
+    transform: translateY(-50%) !important;
+    top: 50% !important;
+    padding: 10px 10px 18px 10px !important;
+    backdrop-filter: blur(3px) !important;
+    border-radius: 20px !important;
+}
+
+/* Command palette text input box */
+.quick-input-filter .monaco-inputbox {
+    border-radius: 12px !important;
+    padding: 8px !important;
+    border: none !important;
+    font-size: 14px !important;
+    margin-bottom: 16px !important;
+}
+
+/* Sidebar title container */
+.composite.title {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-items: center !important;
+}
+
+/* Sidebar title text styling */
+.composite.title h2 {
+    font-weight: bold !important;
+    font-size: 12px !important;
+    text-transform: uppercase;
+}
+
+/* Sidebar title icon */
+.composite.title h2::before {
+    display: inline-block;
+    margin-right: 6px;
+    font-size: 1.1rem;
+    content: ' ';
+}
+
+/* Blur command palette background */
+#command-blur {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .15);
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(8px);
+}
+
+
+/* Command palette's input box placeholder */
+.monaco-inputbox input::placeholder {
+    font-size: 14px !important;
+}
+
+
+/* Tooltip box style */
+.monaco-editor-hover,
+.monaco-hover {
+    box-shadow: 0px 8px 32px rgba(0,0,0,.45) !important;
+    padding: 10px !important;
+    background-image: linear-gradient(#3c3c50 0%, #2a2b38 100%) !important;
+    backdrop-filter: blur(3px) !important;
+    border-radius: 20px !important;
+    border: none !important;
+}

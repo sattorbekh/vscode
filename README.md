@@ -6,6 +6,6 @@
   3. Custom CSS and JS loader
   4. Prettier
 
-** Result:**
+**Result:**
 ![](./result.jpg)
 

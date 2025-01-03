@@ -3,6 +3,9 @@
     font-family: 'Source Code Pro';
 }
 
+
+
+
 /* Command Palette styling */
 .quick-input-widget {
     transform: translateY(-50%) !important;
@@ -15,11 +18,13 @@
 /* Command palette text input box */
 .quick-input-filter .monaco-inputbox {
     border-radius: 12px !important;
-    padding: 8px !important;
+    padding: 12px !important;
     border: none !important;
-    font-size: 14px !important;
+    font-size: 16px !important;
     margin-bottom: 16px !important;
 }
+
+
 
 /* Sidebar title container */
 .composite.title {
@@ -58,20 +63,28 @@
 
 /* Command palette's input box placeholder */
 .monaco-inputbox input::placeholder {
-    font-size: 14px !important;
+    font-size: 16px !important;
 }
 
 
 /* Tooltip box style */
 .monaco-editor-hover,
 .monaco-hover {
-    box-shadow: 0px 8px 32px rgba(0,0,0,.45) !important;
-    padding: 10px !important;
-    background-image: linear-gradient(#3c3c50 0%, #2a2b38 100%) !important;
-    backdrop-filter: blur(3px) !important;
-    border-radius: 20px !important;
-    border: none !important;
+    box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.25), 
+                0 0 8px 2px rgba(255, 255, 255, 0.1) inset !important; /* Ichki nurlar */
+    padding: 12px 14px !important;
+    background: linear-gradient(
+        145deg,
+        var(--vscode-editorHoverWidget-background),
+        rgba(255, 255, 255, 0.05)
+    ) !important;
+    color: var(--vscode-editorHoverWidget-foreground) !important;
+    backdrop-filter: blur(5px) !important; /* Yengil blur effekti */
+    border-radius: 15px !important; /* Yumaloq burchaklar */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Yengil chegara */
+    transition: all 0.2s ease-in-out !important; /* Qaytuvchan o‘tish */
 }
+
 
 
 
@@ -83,7 +96,6 @@
 .command-center-center {
     width:  auto !important;
 }
-
 
 
 .letterpress {

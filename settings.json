@@ -1,11 +1,10 @@
 {
-    "workbench.colorTheme": "Vercel (Light)",
+    "workbench.colorTheme": "Vercel (Dark)",
     "chat.commandCenter.enabled": false,
     "window.commandCenter": false,
     "workbench.layoutControl.enabled": false,
     "workbench.statusBar.visible": false,
     "workbench.activityBar.location": "hidden",
-    "workbench.sideBar.location": "right",
     "workbench.activityBar.iconClickBehavior": "focus",
 
     "editor.fontFamily": "Source Code Pro",
@@ -20,12 +19,8 @@
     "workbench.editor.showTabs": "single",
     "window.titleBarStyle": "custom",
     "window.title": "Visual Studio Code",
-    "workbench.startupEditor": "none",
     "workbench.iconTheme": "charmed-icons",
-    "workbench.settings.applyToAllProfiles": [
-
-    
-    ],
+    "workbench.settings.applyToAllProfiles": [],
     "vscode_custom_css.imports": [
         "file:///Users/sattorbek/.vscode/settings/custom.css",
         "file:///Users/sattorbek/.vscode/settings/custom.js"
@@ -45,6 +40,11 @@
 
 
     "terminal.integrated.fontSize": 14,
-    "terminal.integrated.fontWeight": "bold",
-    "terminal.integrated.cursorStyle": "block"
+    "terminal.integrated.cursorStyle": "block",
+    "workbench.sideBar.location": "right",
+    
+
+    "workbench.startupEditor": "none",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.tips.enabled": false,
 }

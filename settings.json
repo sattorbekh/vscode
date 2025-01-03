@@ -1,0 +1,50 @@
+{
+    "workbench.colorTheme": "Vercel (Light)",
+    "chat.commandCenter.enabled": false,
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.statusBar.visible": false,
+    "workbench.activityBar.location": "hidden",
+    "workbench.sideBar.location": "right",
+    "workbench.activityBar.iconClickBehavior": "focus",
+
+    "editor.fontFamily": "Source Code Pro",
+    "editor.fontSize": 16,
+    "editor.lineHeight": 1.5,
+    "editor.lineNumbers": "off",
+    "editor.renderLineHighlight": "none",
+    "editor.cursorStyle": "line",
+    "editor.codeLens": false,
+
+
+    "workbench.editor.showTabs": "single",
+    "window.titleBarStyle": "custom",
+    "window.title": "Visual Studio Code",
+    "workbench.startupEditor": "none",
+    "workbench.iconTheme": "charmed-icons",
+    "workbench.settings.applyToAllProfiles": [
+
+    
+    ],
+    "vscode_custom_css.imports": [
+        "file:///Users/sattorbek/.vscode/settings/custom.css",
+        "file:///Users/sattorbek/.vscode/settings/custom.js"
+    ],
+    "workbench.editor.enablePreview": false,
+    "editor.scrollbar.vertical": "hidden",
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.minimap.showSlider": "always",
+    "editor.minimap.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    "workbench.editor.editorActionsLocation": "titleBar",
+    "editor.guides.indentation": false,
+    "workbench.tree.enableStickyScroll": false,
+    "editor.padding.top": 16,
+    "editor.accessibilitySupport": "off",
+    "files.autoSave": "afterDelay",
+
+
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontWeight": "bold",
+    "terminal.integrated.cursorStyle": "block"
+}

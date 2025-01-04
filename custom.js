@@ -1,79 +1,68 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const checkElement = setInterval(() => {
-        const commandDialog = document.querySelector(".quick-input-widget");
-        if (commandDialog) {
-          // Apply the blur effect immediately if the command dialog is visible
-          if (commandDialog.style.display !== "none") {
-            runMyScript();
-          }
-            // Create an DOM observer to 'listen' for changes in element's attribute.
-            const observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => {
-                    if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                        if (commandDialog.style.display === 'none') {
-                            handleEscape();
-                        } else {
-                            // If the .quick-input-widget element (command palette) is in the DOM
-                            // but no inline style display: none, show the backdrop blur.
-                            runMyScript();
-                        }
-                    }
-                });
-            });
+document.addEventListener('DOMContentLoaded', function () {
+    const observerConfig = { attributes: true }; // Observe style changes
+    let blurElement = null; // Global reference for the blur element
 
-            observer.observe(commandDialog, { attributes: true });
-
-            // Clear the interval once the observer is set
-            clearInterval(checkElement);
-        } else {
-            console.log("Command dialog not found yet. Retrying...");
-        }
-    }, 500); // Check every 500ms
-
-    // Execute when command palette was launched.
-    document.addEventListener('keydown', function(event) {
-        if ((event.metaKey || event.ctrlKey) && event.key === 'p') {
-            event.preventDefault();
-            runMyScript();
-        } else if (event.key === 'Escape' || event.key === 'Esc') {
-            event.preventDefault();
-            handleEscape();
-        }
-    });
-
-    // Ensure the escape key event listener is at the document level
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' || event.key === 'Esc') {
-            handleEscape();
-        }
-    }, true);
-
+    // Function to add the blur effect
     function runMyScript() {
         const targetDiv = document.querySelector(".monaco-workbench");
 
-        // Remove existing element if it already exists
-        const existingElement = document.getElementById("command-blur");
-        if (existingElement) {
-            existingElement.remove();
-        }
+        // If blur element already exists, do nothing
+        if (blurElement) return;
 
-        // Create and configure the new element
-        const newElement = document.createElement("div");
-        newElement.setAttribute('id', 'command-blur');
+        // Create and configure the blur element
+        blurElement = document.createElement("div");
+        blurElement.setAttribute('id', 'command-blur');
+        blurElement.style.position = 'fixed';
+        blurElement.style.top = 0;
+        blurElement.style.left = 0;
+        blurElement.style.width = '100%';
+        blurElement.style.height = '100%';
+        blurElement.style.background = 'rgba(0, 0, 0, 0.15)';
+        blurElement.style.backdropFilter = 'blur(8px)';
+        blurElement.style.zIndex = '1000';
 
-        newElement.addEventListener('click', function() {
-            newElement.remove();
-        });
+        // Add click event to remove blur
+        blurElement.addEventListener('click', handleEscape);
 
-        // Append the new element as a child of the targetDiv
-        targetDiv.appendChild(newElement);
+        // Append the blur element
+        targetDiv.appendChild(blurElement);
     }
 
-    // Remove the backdrop blur from the DOM when esc key is pressed.
+    // Function to remove the blur effect
     function handleEscape() {
-        const element = document.getElementById("command-blur");
-        if (element) {
-            element.click();
+        if (blurElement) {
+            blurElement.remove();
+            blurElement = null; // Reset reference
         }
     }
+
+    // Mutation Observer to track Command Palette visibility
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                const commandDialog = mutation.target;
+                if (commandDialog.style.display === 'none') {
+                    handleEscape(); // Remove blur when Command Palette is hidden
+                } else {
+                    runMyScript(); // Add blur when Command Palette is shown
+                }
+            }
+        });
+    });
+
+    // Check for the Command Palette element
+    const checkElement = setInterval(() => {
+        const commandDialog = document.querySelector(".quick-input-widget");
+        if (commandDialog) {
+            observer.observe(commandDialog, observerConfig);
+            clearInterval(checkElement); // Stop interval once found
+        }
+    }, 500);
+
+    // Add keyboard listener for Escape key
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' || event.key === 'Esc') {
+            handleEscape();
+        }
+    });
 });
